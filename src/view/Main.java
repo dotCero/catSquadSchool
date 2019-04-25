@@ -30,7 +30,7 @@ public class Main extends javax.swing.JFrame {
         lblPortrait = new javax.swing.JLabel();
         btnInEnrollment = new javax.swing.JButton();
         btnMonitor = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
+        sptorPrincipal = new javax.swing.JSeparator();
         btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -39,13 +39,18 @@ public class Main extends javax.swing.JFrame {
         lblPortrait.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnInEnrollment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/resources/enrollment32.png"))); // NOI18N
-        btnInEnrollment.setText("Matrícular");
+        btnInEnrollment.setText("Matricular");
 
         btnMonitor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/resources/monitor32.png"))); // NOI18N
         btnMonitor.setText("Monitorear");
 
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/resources/exit32.png"))); // NOI18N
         btnExit.setText("Salir");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -54,7 +59,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(sptorPrincipal, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnInEnrollment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblPortrait)
@@ -71,7 +76,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblPortrait)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(sptorPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnInEnrollment)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -83,6 +88,10 @@ public class Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,7 +132,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnInEnrollment;
     private javax.swing.JButton btnMonitor;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblPortrait;
+    private javax.swing.JSeparator sptorPrincipal;
     // End of variables declaration//GEN-END:variables
 }
