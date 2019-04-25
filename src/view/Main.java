@@ -1,6 +1,8 @@
 package view;
 
+import controller.EnrollmentSet;
 import controller.FormSet;
+import controller.event.EnrollmentActionListener;
 import controller.event.ExitActionListener;
 
 /**
@@ -13,6 +15,18 @@ public class Main extends javax.swing.JFrame {
         new FormSet(this).undecorated();
         initComponents();
         new FormSet(this).setAll();
+        new EnrollmentSet(
+                frameEnrollment,
+                txtRut,
+                txtRutDigit,
+                txtName,
+                txtAge,
+                txtAddress,
+                sldAge,
+                radioM,
+                radioF,
+                radioNI,
+                groupSex).setAll();
     }
 
     @SuppressWarnings("unchecked")
@@ -20,13 +34,13 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         frameEnrollment = new javax.swing.JFrame();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        pnlStudent = new javax.swing.JPanel();
+        lblRut = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        lblAge = new javax.swing.JLabel();
+        llSex = new javax.swing.JLabel();
+        lblAddress = new javax.swing.JLabel();
+        scrollAddress = new javax.swing.JScrollPane();
         txtAddress = new javax.swing.JTextArea();
         txtRut = new javax.swing.JTextField();
         txtName = new javax.swing.JTextField();
@@ -34,32 +48,32 @@ public class Main extends javax.swing.JFrame {
         radioM = new javax.swing.JRadioButton();
         radioF = new javax.swing.JRadioButton();
         radioNI = new javax.swing.JRadioButton();
-        jLabel6 = new javax.swing.JLabel();
+        lblMinus = new javax.swing.JLabel();
         txtRutDigit = new javax.swing.JTextField();
         sldAge = new javax.swing.JSlider();
         btnCheck = new javax.swing.JButton();
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        groupSex = new javax.swing.ButtonGroup();
         lblPortrait = new javax.swing.JLabel();
         btnInEnrollment = new javax.swing.JButton();
         btnMonitor = new javax.swing.JButton();
         sptorPrincipal = new javax.swing.JSeparator();
         btnExit = new javax.swing.JButton();
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, java.awt.Color.red), "Gestión Estudiantes", 0, 0, new java.awt.Font("Tahoma", 0, 11), java.awt.Color.lightGray)); // NOI18N
+        pnlStudent.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, java.awt.Color.red), "Gestión Estudiantes", 0, 0, new java.awt.Font("Tahoma", 0, 11), java.awt.Color.lightGray)); // NOI18N
 
-        jLabel1.setText("Rut: ");
+        lblRut.setText("Rut: ");
 
-        jLabel2.setText("Nombre: ");
+        lblName.setText("Nombre: ");
 
-        jLabel3.setText("Edad: ");
+        lblAge.setText("Edad: ");
 
-        jLabel4.setText("Sexo: ");
+        llSex.setText("Sexo: ");
 
-        jLabel5.setText("Dirección: ");
+        lblAddress.setText("Dirección: ");
 
         txtAddress.setColumns(20);
         txtAddress.setRows(5);
-        jScrollPane1.setViewportView(txtAddress);
+        scrollAddress.setViewportView(txtAddress);
 
         radioM.setText("Masculino");
 
@@ -67,82 +81,82 @@ public class Main extends javax.swing.JFrame {
 
         radioNI.setText("No Representa");
 
-        jLabel6.setText("-");
+        lblMinus.setText("-");
 
         btnCheck.setText("Revisar");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlStudentLayout = new javax.swing.GroupLayout(pnlStudent);
+        pnlStudent.setLayout(pnlStudentLayout);
+        pnlStudentLayout.setHorizontalGroup(
+            pnlStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlStudentLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                .addGroup(pnlStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlStudentLayout.createSequentialGroup()
+                        .addComponent(lblAddress)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(scrollAddress))
+                    .addGroup(pnlStudentLayout.createSequentialGroup()
+                        .addComponent(lblRut)
                         .addGap(30, 30, 30)
                         .addComponent(txtRut, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)
+                        .addComponent(lblMinus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtRutDigit, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCheck, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
+                    .addGroup(pnlStudentLayout.createSequentialGroup()
+                        .addGroup(pnlStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblName)
+                            .addComponent(lblAge)
+                            .addComponent(llSex))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(pnlStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlStudentLayout.createSequentialGroup()
                                 .addComponent(radioM)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(radioF)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(radioNI))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pnlStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(pnlStudentLayout.createSequentialGroup()
                                     .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(sldAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pnlStudentLayout.setVerticalGroup(
+            pnlStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlStudentLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                .addGroup(pnlStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblRut)
                     .addComponent(txtRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
+                    .addComponent(lblMinus)
                     .addComponent(txtRutDigit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCheck))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                .addGroup(pnlStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblName)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
+                .addGroup(pnlStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblAge)
                         .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(sldAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                .addGroup(pnlStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(llSex)
                     .addComponent(radioM)
                     .addComponent(radioF)
                     .addComponent(radioNI))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAddress)
+                    .addComponent(scrollAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -152,14 +166,14 @@ public class Main extends javax.swing.JFrame {
             frameEnrollmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(frameEnrollmentLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         frameEnrollmentLayout.setVerticalGroup(
             frameEnrollmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(frameEnrollmentLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(179, Short.MAX_VALUE))
         );
 
@@ -170,6 +184,11 @@ public class Main extends javax.swing.JFrame {
 
         btnInEnrollment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/resources/enrollment32.png"))); // NOI18N
         btnInEnrollment.setText("Matricular");
+        btnInEnrollment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInEnrollmentActionPerformed(evt);
+            }
+        });
 
         btnMonitor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/resources/monitor32.png"))); // NOI18N
         btnMonitor.setText("Monitorear");
@@ -223,6 +242,10 @@ public class Main extends javax.swing.JFrame {
         new ExitActionListener().actionPerformed(evt);
     }//GEN-LAST:event_btnExitActionPerformed
 
+    private void btnInEnrollmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInEnrollmentActionPerformed
+        new EnrollmentActionListener(this, frameEnrollment).actionPerformed(evt);
+    }//GEN-LAST:event_btnInEnrollmentActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -255,26 +278,26 @@ public class Main extends javax.swing.JFrame {
             new Main().setVisible(true);
         });
     }
-
+    // <editor-fold defaultstate="collapsed" desc="Generated Code. Variables declaration">   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCheck;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnInEnrollment;
     private javax.swing.JButton btnMonitor;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JFrame frameEnrollment;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.ButtonGroup groupSex;
+    private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblAge;
+    private javax.swing.JLabel lblMinus;
+    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPortrait;
+    private javax.swing.JLabel lblRut;
+    private javax.swing.JLabel llSex;
+    private javax.swing.JPanel pnlStudent;
     private javax.swing.JRadioButton radioF;
     private javax.swing.JRadioButton radioM;
     private javax.swing.JRadioButton radioNI;
+    private javax.swing.JScrollPane scrollAddress;
     private javax.swing.JSlider sldAge;
     private javax.swing.JSeparator sptorPrincipal;
     private javax.swing.JTextArea txtAddress;
@@ -283,4 +306,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtRut;
     private javax.swing.JTextField txtRutDigit;
     // End of variables declaration//GEN-END:variables
+    // </editor-fold>  
+
 }
