@@ -1,6 +1,7 @@
 package view;
 
 import controller.EnrollmentSet;
+import controller.Exec;
 import controller.FormSet;
 import controller.event.EnrollmentActionListener;
 import controller.event.ExitActionListener;
@@ -27,6 +28,9 @@ public class Main extends javax.swing.JFrame {
                 radioF,
                 radioNI,
                 groupSex).setAll();
+
+        Exec executar = new Exec();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -278,7 +282,7 @@ public class Main extends javax.swing.JFrame {
             new Main().setVisible(true);
         });
     }
-    // <editor-fold defaultstate="collapsed" desc="Generated Code. Variables declaration">   
+    // <editor-fold defaultstate="collapsed" desc="Generated Code. Variables declaration">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCheck;
     private javax.swing.JButton btnExit;
@@ -306,6 +310,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtRut;
     private javax.swing.JTextField txtRutDigit;
     // End of variables declaration//GEN-END:variables
-    // </editor-fold>  
+    // </editor-fold>
 
 }

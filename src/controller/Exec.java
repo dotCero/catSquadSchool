@@ -24,6 +24,15 @@ public class Exec {
         studentList = new ArrayList<>();
         agreementList = new ArrayList<>();
         enrollmentList = new ArrayList<>();
+
+        Student s = new Student(
+                "17966899",
+                "Diego Lucero",
+                (short) 27,
+                Sexo.MASCULINO,
+                "Pasaje Javier Gumucio N°48 Población El Naranjal, Rengo"
+        );
+        studentList.add(s);
     }
 
     public List<Course> getCourseList() {
@@ -51,14 +60,23 @@ public class Exec {
         Student s = new Student(rut, name, age, sexo, address);
         studentList.add(s);
     }
-    
-    public void createAgreement(String name, float discount){
+
+    public void createAgreement(String name, float discount) {
         Agreement a = new Agreement(name, discount);
         agreementList.add(a);
     }
-    
-    public void createEnrollment(Student student, Course course, boolean hAgreement){
+
+    public void createEnrollment(Student student, Course course, boolean hAgreement) {
         Enrollment e = new Enrollment(student, course, hAgreement);
         enrollmentList.add(e);
+    }
+
+    public Student getStudentByRut(String rut) {
+        for (Student s : studentList) {
+            if (s.getRut().equalsIgnoreCase(rut)) {
+                return s;
+            }
+        }
+        return null;
     }
 }

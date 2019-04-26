@@ -7,7 +7,7 @@ import model.enume.Sexo;
  * @author cero
  */
 public class Student {
-    
+
     private String rut;
     private String name;
     private short age;
@@ -61,4 +61,10 @@ public class Student {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" + "rut=" + rut + ", name=" + name + ", age=" + age + ", sexo=" + sexo + ", address=" + address + '}';
+    }
+
 }
